@@ -1,3 +1,6 @@
+git:
+ depth: 3
+
 language: cpp
 
 sudo: no
@@ -109,11 +112,10 @@ matrix:
       addons: *gcc6
 
 before_install:
- - echo ${CXX}
+ - echo ${CXX} ${CXXFLAGS}
  - mkdir Downloads Libraries
  - cd Downloads
- - wget -O boost_1_61_0.tar.gz http://sourceforge.net/projects/boost/files/boost/1.61.0/boost_1_61_0.tar.gz/download
- - tar xzf boost_1_61_0.tar.gz
+ - wget -O - http://sourceforge.net/projects/boost/files/boost/1.61.0/boost_1_61_0.tar.gz/download | tar zxf -
  - cd boost_1_61_0/
  - bash bootstrap.sh --prefix=$HOME/Libraries --with-libraries=system,chrono,thread,regex,date_time,atomic,thread,test,random,coroutine
  - ./b2 variant=release link=static threading=multi runtime-link=shared -j 4 -d0 install
@@ -125,7 +127,7 @@ env:
     - BOOST_LIBS=$HOME/Libraries/lib
 
 script:
- - echo ok
+ - scons
 
 notifications:
  recipients:
