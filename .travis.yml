@@ -1,7 +1,17 @@
+language: cpp
+
 git:
  depth: 3
 
-language: cpp
+env:
+  global:
+    - BOOST_INCLUDES=$HOME/Libraries/include
+    - BOOST_LIBS=$HOME/Libraries/lib
+    - BOOST_V=1_61_0
+    - BOOST_VV=1.61.0
+
+cache:
+ directories: boost_${BOOST_V}
 
 sudo: no
 
@@ -115,16 +125,11 @@ before_install:
  - echo ${CXX} ${CXXFLAGS}
  - mkdir Downloads Libraries
  - cd Downloads
- - wget -O - http://sourceforge.net/projects/boost/files/boost/1.61.0/boost_1_61_0.tar.gz/download | tar zxf -
- - cd boost_1_61_0/
+ - wget -O - http://sourceforge.net/projects/boost/files/boost/${BOOST_VV}/boost_${BOOST_V}.tar.gz/download | tar zxf -
+ - cd boost_${BOOST_V}/
  - bash bootstrap.sh --prefix=$HOME/Libraries --with-libraries=system,chrono,thread,regex,date_time,atomic,thread,test,random,coroutine
  - ./b2 variant=release link=static threading=multi runtime-link=shared -j 4 -d0 install
  - cd ../..
-
-env:
-  global:
-    - BOOST_INCLUDES=$HOME/Libraries/include
-    - BOOST_LIBS=$HOME/Libraries/lib
 
 script:
  - scons
