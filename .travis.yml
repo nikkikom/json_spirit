@@ -1,7 +1,4 @@
 language: cpp
-compiler:
-    - gcc
-    - clang
 
 sudo: no
 
@@ -43,6 +40,10 @@ addons_shortcuts:
     apt:
       sources: [ 'ubuntu-toolchain-r-test' ]
       packages: [ 'g++-5' ]
+  addons_gcc5: &gcc6
+    apt:
+      sources: [ 'ubuntu-toolchain-r-test' ]
+      packages: [ 'g++-6' ]
 
 matrix:
   include:
@@ -98,6 +99,14 @@ matrix:
       compiler: "gcc5"
       env: CXX=g++-5 CXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=1"
       addons: *gcc5
+    - os: linux
+      compiler: "gcc6"
+      env: CXX=g++-6 CXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0"
+      addons: *gcc6
+    - os: linux
+      compiler: "gcc6"
+      env: CXX=g++-6 CXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=1"
+      addons: *gcc6
 
 before_install:
  - echo ${CXX}
