@@ -1,6 +1,7 @@
 language: cpp
 compiler:
     - gcc
+	- clang
 
 sudo: no
 
@@ -8,11 +9,11 @@ addons:
  apt:
   sources:
    - ubuntu-toolchain-r-test
-   - llvm-toolchain-precise-3.7
+   - llvm-toolchain-precise-3.9
   packages:
    - cmake
-   - gcc-5
-   - clang-3.7
+   - gcc-6
+   - clang-3.9
 
 before_install:
  - mkdir Downloads Libraries
