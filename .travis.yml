@@ -1,0 +1,30 @@
+language: cpp
+compiler:
+    - gcc
+
+sudo: no
+
+addons:
+ apt:
+  sources:
+   - ubuntu-toolchain-r-test
+  packages:
+   - cmake
+
+before_install:
+ - mkdir Downloads Libraries
+ - cd Downloads
+ - wget -O boost_1_61_0.tar.gz http://sourceforge.net/projects/boost/files/boost/1.61.0/boost_1_61_0.tar.gz/download
+ - tar xzf boost_1_61_0.tar.gz
+ - cd boost_1_61_0/
+ - bash bootstrap.sh --prefix=$HOME/Libraries --with-libraries=system,chrono,thread,regex,date_time,atomic,thread,test,random,coroutine
+ - ./b2 variant=release link=static threading=multi runtime-link=shared -j 4 -d0 install
+ - cd ../..
+
+env:
+  global:
+    - BOOST_INCLUDES=$HOME/Libraries/include
+    - BOOST_LIBS=$HOME/Libraries/lib
+
+script:
+ - echo ok
