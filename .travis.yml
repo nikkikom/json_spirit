@@ -124,7 +124,7 @@ matrix:
 
 before_install:
  - echo ${CXX} ${CXXFLAGS}
- - /usr/sbin/dpkg -L g++-5
+ - /sbin/dpkg -L g++-5
  - mkdir Downloads Libraries
  - cd Downloads
  - wget -O - http://sourceforge.net/projects/boost/files/boost/${BOOST_VV}/boost_${BOOST_V}.tar.gz/download | tar zxf -
