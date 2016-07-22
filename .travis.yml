@@ -123,17 +123,18 @@ matrix:
       addons: *gcc6
 
 before_install:
- - echo ${CXX} ${CXXFLAGS}
- - ls -l /usr/bin/*++*
- - echo "using clang : : ${CXX} ;" > user-config.jam
- - echo "using gcc : : ${CXX} ;" >> user-config.jam
- - mkdir Downloads Libraries
- - cd Downloads
- - wget -O - http://sourceforge.net/projects/boost/files/boost/${BOOST_VV}/boost_${BOOST_V}.tar.gz/download | tar zxf -
- - cd boost_${BOOST_V}/
- - bash bootstrap.sh --prefix=$HOME/Libraries --with-libraries=system,chrono,thread,regex,date_time,atomic,thread,test,random,coroutine
- - ./b2 variant=release link=static threading=multi runtime-link=shared cxxflags="${CXXFLAGS}" -j 4 -d0 install
- - cd ../..
+ - |
+   echo ${CXX} ${CXXFLAGS}
+   ls -l /usr/bin/*++*
+   echo "using clang : : ${CXX} ;" > user-config.jam
+   echo "using gcc : : ${CXX} ;" >> user-config.jam
+   mkdir Downloads Libraries
+   cd Downloads
+   wget -O - http://sourceforge.net/projects/boost/files/boost/${BOOST_VV}/boost_${BOOST_V}.tar.gz/download | tar zxf -
+   cd boost_${BOOST_V}/
+   bash bootstrap.sh --prefix=$HOME/Libraries --with-libraries=system,chrono,thread,regex,date_time,atomic,thread,test,random,coroutine
+   ./b2 variant=release link=static threading=multi runtime-link=shared cxxflags="${CXXFLAGS}" -j 4 -d0 install
+   cd ../..
 
 install:
   - |
