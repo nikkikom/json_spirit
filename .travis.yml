@@ -5,10 +5,12 @@ git:
 
 env:
   global:
-    - BOOST_INCLUDES=$HOME/Libraries/include
-    - BOOST_LIBS=$HOME/Libraries/lib
-    - BOOST_V=1_61_0
+    - DEPS_DIR="${TRAVIS_BUILD_DIR}/deps"
+    - BOOST_DIR=${DEPS_DIR}/boost-${BOOST_VERSION}
+    - BOOST_INCLUDES=${BOOST_DIR}/include
+    - BOOST_LIBS=${BOOST_ROOT}/lib
     - BOOST_VERSION=1.61.0
+    - BOOST_V=1_61_0
     - BUILD_TYPE=Debug
 
 cache:
@@ -129,11 +131,9 @@ before_install:
    echo "using gcc : : ${CXX} ;" >> ${HOME}/user-config.jam
 
 install:
-  - DEPS_DIR="${TRAVIS_BUILD_DIR}/deps"
   - mkdir -p ${DEPS_DIR} && cd ${DEPS_DIR}
 
   - |
-    BOOST_DIR=${DEPS_DIR}/boost-${BOOST_VERSION}
     mkdir -p ${BOOST_DIR}
     BOOST_URL="http://sourceforge.net/projects/boost/files/boost/${BOOST_VERSION}/boost_${BOOST_VERSION//\./_}.tar.gz"
     { travis_retry wget --quiet -O - ${BOOST_URL} | tar --strip-components=1 -xz -C ${BOOST_DIR};  } || exit 1
@@ -141,6 +141,8 @@ install:
     bash bootstrap.sh --prefix=$HOME/Libraries --with-libraries=system,chrono,thread,regex,date_time,atomic,thread,test,random,coroutine
     ./b2 variant=release link=static threading=multi runtime-link=shared cxxflags="${CXXFLAGS}" -j 4 -d0 install
     CMAKE_OPTIONS+=" -DBOOST_ROOT=${BOOST_DIR}"
+    cd ..
+	ls -ltR
 
   - |
     cd ${DEPS_DIR}
