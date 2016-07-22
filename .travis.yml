@@ -65,55 +65,55 @@ matrix:
 	  #osx_image: xcode8
 	  #env: CXXFLAGS="-std=c++14 -pipe"
 	  #compiler: clang
-    - #os: osx
+	  # - os: osx
 	  #osx_image: xcode7.3
 	  #env: CXXFLAGS="-std=c++14 -pipe"
 	  #compiler: clang
-    - #os: osx
+	  # - os: osx
 	  #osx_image: xcode7.2
 	  #env: CXXFLAGS="-std=c++14 -pipe"
 	  #compiler: clang
-    - #os: osx
+	  # - os: osx
 	  #osx_image: xcode7
 	  #env: CXXFLAGS="-std=c++14 -pipe"
 	  #compiler: clang
-    - #os: osx
+	  # - os: osx
 	  #osx_image: xcode6
 	  #env: CXXFLAGS="-std=c++11 -pipe"
 	  #compiler: clang
-    - #os: linux
+	  # - os: linux
 	  #compiler: "clang35"
 	  #env: CXX=/usr/bin/clang++-3.5 CXXFLAGS="-std=c++14 -pipe"
 	  #addons: *clang35
-    - #os: linux
+	  # - os: linux
 	  #compiler: "clang36"
 	  #env: CXX=/usr/bin/clang++-3.6 CXXFLAGS="-std=c++14 -pipe"
 	  #addons: *clang36
-    - #os: linux
+	  # - os: linux
 	  #compiler: "clang37"
 	  #env: CXX=/usr/bin/clang++-3.7 CXXFLAGS="-std=c++14 -pipe"
 	  #addons: *clang37
-    - #os: linux
+	  # - os: linux
 	  #compiler: "clang38"
 	  #env: CXX=/usr/bin/clang++-3.8 CXXFLAGS="-std=c++14 -pipe"
 	  #addons: *clang38
-    - #os: linux
+	  # - os: linux
       compiler: "clang39"
       env: CXX=/usr/bin/clang++-3.9 CXXFLAGS="-std=c++14 -pipe"
       addons: *clang39
-    - #os: linux
+	  # - os: linux
 	  #compiler: "gcc47"
 	  #env: CXX=/usr/bin/g++-4.7 CXXFLAGS="-std=c++14 -pipe"
 	  #addons: *gcc47
-    - #os: linux
+	  # - os: linux
 	  #compiler: "gcc48"
 	  #env: CXX=/usr/bin/g++-4.8 CXXFLAGS="-std=c++14 -pipe"
 	  #addons: *gcc48
-    - #os: linux
+	  # - os: linux
 	  #compiler: "gcc49"
 	  #env: CXX=/usr/bin/g++-4.9 CXXFLAGS="-std=c++14 -pipe"
 	  #addons: *gcc49
-    - #os: linux
+	  # - os: linux
 	  #compiler: "gcc5"
 	  #env: CXX=g++-5 CXXFLAGS="-std=c++14 -pipe"
 	  #addons: *gcc5
