@@ -125,6 +125,8 @@ matrix:
 before_install:
  - echo ${CXX} ${CXXFLAGS}
  - ls -l /usr/bin/*++*
+ - echo "using clang : : ${CXX} ;" > user-config.jam
+ - echo "using gcc : : ${CXX} ;" >> user-config.jam
  - mkdir Downloads Libraries
  - cd Downloads
  - wget -O - http://sourceforge.net/projects/boost/files/boost/${BOOST_VV}/boost_${BOOST_V}.tar.gz/download | tar zxf -
@@ -152,10 +154,6 @@ before_script:
 script:
  - cd b;
  - ctest
-
-script:
- - cd ${TRAVIS_BUILD_DIR}
- - (mkdir build && cd build && cmake .. ${CMAKE_OPTIONS})
 
 notifications:
  recipients:
