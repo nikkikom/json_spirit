@@ -142,7 +142,6 @@ install:
     ./b2 variant=release link=static threading=multi runtime-link=shared cxxflags="${CXXFLAGS}" -j 4 -d0 install
     CMAKE_OPTIONS+=" -DBOOST_ROOT=${BOOST_DIR}"
     cd ..
-    ls -ltR
 
   - |
     cd ${DEPS_DIR}
