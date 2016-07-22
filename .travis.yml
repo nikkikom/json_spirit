@@ -151,7 +151,7 @@ before_script:
  - cmake --build b
 
 script:
- - cd b
+ - cd b;
  - ctest
 
 notifications:
