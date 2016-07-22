@@ -97,7 +97,7 @@ matrix:
       addons: *clang37
     - os: linux
       compiler: "clang38"
-      env: CXX=/usr/bin/clang++-3.8 CXXFLAGS="-std=c++14 -pipe" -Wno-#pragma-messages
+      env: CXX=/usr/bin/clang++-3.8 CXXFLAGS="-std=c++14 -pipe -Wno-#pragma-messages"
       addons: *clang38
     - os: linux
       compiler: "clang39"
@@ -115,7 +115,7 @@ matrix:
       compiler: "gcc49"
       env: CXX=/usr/bin/g++-4.9 CXXFLAGS="-std=c++14 -pipe -Wno-#pragma-messages -Wno-placement-new"
       addons: *gcc49
-      - os: linux
+    - os: linux
       compiler: "gcc5"
       env: CXX=/usr/bin/g++-5 CXXFLAGS="-std=c++14 -pipe -Wno-#pragma-messages -Wno-placement-new"
       addons: *gcc5
