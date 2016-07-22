@@ -101,7 +101,7 @@ matrix:
     # addons: *clang38
     - os: linux
       compiler: "clang39"
-      env: CXX=/usr/bin/clang++-3.9 CXXFLAGS="-std=c++14 -pipe"
+      env: CXX=/usr/bin/clang++-3.9 CXXFLAGS="-std=c++14 -pipe -Wno-unknown-pragmas -Wno-placement-new"
       addons: *clang39
     # - os: linux
     # compiler: "gcc47"
