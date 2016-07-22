@@ -133,7 +133,9 @@ before_install:
    wget -O - http://sourceforge.net/projects/boost/files/boost/${BOOST_VV}/boost_${BOOST_V}.tar.gz/download | tar zxf -
    cd boost_${BOOST_V}/
    bash bootstrap.sh --prefix=$HOME/Libraries --with-libraries=system,chrono,thread,regex,date_time,atomic,thread,test,random,coroutine
+   echo s11
    ./b2 variant=release link=static threading=multi runtime-link=shared cxxflags="${CXXFLAGS}" -j 4 -d0 install
+   echo s22
    cd ../..
 
 install:
