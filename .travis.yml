@@ -125,7 +125,6 @@ matrix:
 before_install:
  - echo ${CXX} ${CXXFLAGS}
  - ls -l /usr/bin/*++*
- - echo -e "using clang : : ${CXX} ;\nusing gcc : : ${CXX} ;\n" > user-config.jam
  - mkdir Downloads Libraries
  - cd Downloads
  - wget -O - http://sourceforge.net/projects/boost/files/boost/${BOOST_VV}/boost_${BOOST_V}.tar.gz/download | tar zxf -
