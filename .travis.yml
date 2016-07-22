@@ -79,7 +79,7 @@ matrix:
       compiler: clang
     - os: osx
       osx_image: xcode6
-      env: CXXFLAGS="-std=c++14 -pipe"
+      env: CXXFLAGS="-std=c++11 -pipe"
       compiler: clang
     - os: linux
       compiler: "clang35"
@@ -124,12 +124,13 @@ matrix:
 
 before_install:
  - echo ${CXX} ${CXXFLAGS}
+ - dpkg -L g++-5
  - mkdir Downloads Libraries
  - cd Downloads
  - wget -O - http://sourceforge.net/projects/boost/files/boost/${BOOST_VV}/boost_${BOOST_V}.tar.gz/download | tar zxf -
  - cd boost_${BOOST_V}/
  - bash bootstrap.sh --prefix=$HOME/Libraries --with-libraries=system,chrono,thread,regex,date_time,atomic,thread,test,random,coroutine
- - ./b2 variant=release link=static threading=multi runtime-link=shared -j 4 -d0 install
+ - ./b2 variant=release link=static threading=multi runtime-link=shared cxxflags="${CXXFLAGS}" -j 4 -d0 install
  - cd ../..
 
 install:
