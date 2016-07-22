@@ -145,7 +145,7 @@ install:
       echo PATH: ${PATH}
     else
       if ! brew ls --version cmake &>/dev/null; then brew install cmake; fi
-	  echo "BREW"
+      echo "BREW"
     fi
     cmake --version
 
