@@ -126,8 +126,8 @@ before_install:
  - |
    echo ${CXX} ${CXXFLAGS}
    ls -l /usr/bin/*++*
-   echo "using clang : : ${CXX} ;" > user-config.jam
-   echo "using gcc : : ${CXX} ;" >> user-config.jam
+   echo "using clang : : ${CXX} ;" > ${HOME}/project-config.jam
+   echo "using gcc : : ${CXX} ;" >> ${HOME}/project-config.jam
    mkdir Downloads Libraries
    cd Downloads
    wget -O - http://sourceforge.net/projects/boost/files/boost/${BOOST_VV}/boost_${BOOST_V}.tar.gz/download | tar zxf -
@@ -149,7 +149,7 @@ install:
 
 before_script:
  - cd ${TRAVIS_BUILD_DIR}
- - cmake -H. -Bb -DCMAKE_CXX_COMPILER=$COMPILER -DCMAKE_INSTALL_PREFIX=$PWD/o -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+ - cmake -H. -Bb -DCMAKE_CXX_COMPILER=${CXX} -DCMAKE_CXX_FLAGS=${CXXFLAGS} -DCMAKE_INSTALL_PREFIX=$PWD/o -DCMAKE_BUILD_TYPE=$BUILD_TYPE
  - cmake --build b
 
 script:
